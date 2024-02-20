@@ -17,13 +17,13 @@ function playRound(playerSelection, computerSelection) {
     console.log("PLAYER : ", playerSelection);
     let roundWinner = '';
     if ((playerSelection == 'Rock' && computerSelection == 'Paper') || (playerSelection == 'Paper' && computerSelection == 'Scissor') || (playerSelection == 'Scissor' && computerSelection == 'Rock')) {
-        gameResult = 'computer';
+        roundWinner = 'computer';
         console.log(`You Lose! ${computerSelection} beats ${playerSelection}`);
     } else if ((playerSelection == 'Rock' && computerSelection == 'Scissor') || (playerSelection == 'Paper' && computerSelection == 'Rock') || (playerSelection == 'Scissor' && computerSelection == 'Paper')) {
         roundWinner = 'player';
         console.log(`You Win! ${playerSelection} beats ${computerSelection}`);
     } else {
-        roundWinner = 'draw' 
+        roundWinner = 'draw';
         console.log('Draw');
     }
     return roundWinner;
@@ -32,13 +32,31 @@ function playRound(playerSelection, computerSelection) {
 function playGame() {
     let playerScore = 0;
     let computerScore = 0;
+    let drawScore = 0;
     let roundWinner = '';
     for (let i = 1; i <= 5; i++) {
         console.log(`Game ${i}`);
         const playerSelection = prompt();
         const computerSelection = getComputerChoice();
         console.log("COMPUTER: ", computerSelection);
-        console.log(playRound(playerSelection, computerSelection));
+        roundWinner = playRound(playerSelection, computerSelection);
+        console.log(roundWinner);
+        switch (roundWinner) {
+            case 'player':
+                playerScore++;
+                break;
+            case 'computer':
+                computerScore++;
+                break;
+            case 'draw':
+                drawScore++;
+                break;
+        }
+    }
+    if (playerScore > computerScore) {
+        console.log(`Results: Player: ${playerScore}, Computer: ${computerScore}, Draw: ${drawScore}, Winner is Player`)
+    } else {
+        console.log(`Results: Player: ${playerScore}, Computer: ${computerScore}, Draw: ${drawScore}, Winner is Computer`)
     }
 }
 
