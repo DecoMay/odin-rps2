@@ -26,7 +26,16 @@ function playRound(playerSelection, computerSelection) {
     return gameResult;
 }
 
-const playerSelection = prompt();
-const computerSelection = getComputerChoice();
-console.log("COMPUTER: ", computerSelection);
-console.log(playRound(playerSelection, computerSelection));
+function playGame() {
+    for (let i = 1; i <= 5; i++) {
+        console.log(`Game ${i}`);
+        const playerSelection = prompt();
+        const computerSelection = getComputerChoice();
+        console.log("COMPUTER: ", computerSelection);
+        console.log(playRound(playerSelection, computerSelection));
+    }
+}
+
+playGame();
+
+
