@@ -13,10 +13,12 @@ function getComputerChoice() {
 }
 
 function playRound(playerSelection, computerSelection) {
+    playerSelection = playerSelection.substr(0,1).toUpperCase() + playerSelection.substr(1).toLowerCase();
+    console.log("PLAYER : ", playerSelection);
     let gameResult = '';
-    if ((playerSelection == 'rock' && computerSelection == 'Paper') || (playerSelection == 'paper' && computerSelection == 'Scissor') || (playerSelection == 'scissor' && computerSelection == 'Rock')) {
+    if ((playerSelection == 'Rock' && computerSelection == 'Paper') || (playerSelection == 'Paper' && computerSelection == 'Scissor') || (playerSelection == 'Scissor' && computerSelection == 'Rock')) {
         gameResult = `You Lose! ${computerSelection} beats ${playerSelection}`;
-    } else if ((playerSelection == 'rock' && computerSelection == 'Scissor') || (playerSelection == 'paper' && computerSelection == 'Rock') || (playerSelection == 'scissor' && computerSelection == 'Paper')) {
+    } else if ((playerSelection == 'Rock' && computerSelection == 'Scissor') || (playerSelection == 'Paper' && computerSelection == 'Rock') || (playerSelection == 'Scissor' && computerSelection == 'Paper')) {
         gameResult = `You Win! ${playerSelection} beats ${computerSelection}`;
     } else {
         gameResult = 'Draw';
@@ -24,7 +26,7 @@ function playRound(playerSelection, computerSelection) {
     return gameResult;
 }
 
-const playerSelection = 'rock';
+const playerSelection = prompt();
 const computerSelection = getComputerChoice();
-console.log(computerSelection);
+console.log("COMPUTER: ", computerSelection);
 console.log(playRound(playerSelection, computerSelection));
