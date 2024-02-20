@@ -15,18 +15,24 @@ function getComputerChoice() {
 function playRound(playerSelection, computerSelection) {
     playerSelection = playerSelection.substr(0,1).toUpperCase() + playerSelection.substr(1).toLowerCase();
     console.log("PLAYER : ", playerSelection);
-    let gameResult = '';
+    let roundWinner = '';
     if ((playerSelection == 'Rock' && computerSelection == 'Paper') || (playerSelection == 'Paper' && computerSelection == 'Scissor') || (playerSelection == 'Scissor' && computerSelection == 'Rock')) {
-        gameResult = `You Lose! ${computerSelection} beats ${playerSelection}`;
+        gameResult = 'computer';
+        console.log(`You Lose! ${computerSelection} beats ${playerSelection}`);
     } else if ((playerSelection == 'Rock' && computerSelection == 'Scissor') || (playerSelection == 'Paper' && computerSelection == 'Rock') || (playerSelection == 'Scissor' && computerSelection == 'Paper')) {
-        gameResult = `You Win! ${playerSelection} beats ${computerSelection}`;
+        roundWinner = 'player';
+        console.log(`You Win! ${playerSelection} beats ${computerSelection}`);
     } else {
-        gameResult = 'Draw';
+        roundWinner = 'draw' 
+        console.log('Draw');
     }
-    return gameResult;
+    return roundWinner;
 }
 
 function playGame() {
+    let playerScore = 0;
+    let computerScore = 0;
+    let roundWinner = '';
     for (let i = 1; i <= 5; i++) {
         console.log(`Game ${i}`);
         const playerSelection = prompt();
